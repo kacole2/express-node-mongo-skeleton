@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+    h1.
+         #{title}
+    ul
+        - each blob, i in blobs
+            li
+                = blob.name
+                = blob.badge
+                = blob.dob
+                = blob.isloved
+                = blob._id
+                form(action='/blobs/#{blob._id}',method='post',enctype='application/x-www-form-urlencoded')
+                    input(type='hidden',value='DELETE',name='_method')
+                    button(type='submit').
+                        Delete
+                a(href='/blobs/#{blob._id}') Edit
