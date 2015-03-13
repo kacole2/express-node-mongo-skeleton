@@ -126,11 +126,14 @@ router.route('/:id')
 	        } else {
 	            //Return the blob
 	            console.log('GET Retrieving ID: ' + blob._id);
+              var blobdob = blob.dob.toISOString();
+              blobdob = blobdob.substring(0, blobdob.indexOf('T'))
 	            res.format({
 	                //HTML response will render the 'edit.jade' template
 	                html: function(){
 	                       res.render('blobs/edit', {
 	                          title: 'Blob' + blob._id,
+                            "blobdob" : blobdob,
 	                          "blob" : blob
 	                      });
 	                 },
