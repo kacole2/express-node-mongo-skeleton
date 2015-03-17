@@ -117,6 +117,30 @@ router.param('id', function(req, res, next, id) {
 });
 
 router.route('/:id')
+  .get(function(req, res) {
+    mongoose.model('Blob').findById(req.id, function (err, blob) {
+      if (err) {
+        console.log('GET Error: There was a problem retrieving: ' + err);
+      } else {
+        console.log('GET Retrieving ID: ' + blob._id);
+        var blobdob = blob.dob.toISOString();
+        blobdob = blobdob.substring(0, blobdob.indexOf('T'))
+        res.format({
+          html: function(){
+              res.render('blobs/show', {
+                "blobdob" : blobdob,
+                "blob" : blob
+              });
+          },
+          json: function(){
+              res.json(blob);
+          }
+        });
+      }
+    });
+  });
+
+router.route('/:id/edit')
 	//GET the individual blob by Mongo ID
 	.get(function(req, res) {
 	    //search for the blob within Mongo

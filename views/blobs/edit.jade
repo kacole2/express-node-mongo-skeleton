@@ -4,10 +4,16 @@ block content
 	h1.
 		Blob ID #{blob._id}
 	form(action='/blobs/#{blob._id}',method='post',name='updateblob',enctype='application/x-www-form-urlencoded')
-		input#inputName(type='text', value='#{blob.name}', name='name')
-		input#inputBadge(type='number', value='#{blob.badge}', name='badge')
-		input#inputDob(type='date', value='#{blobdob}', name='dob')
-		input#inputIsLoved(type='checkbox', name='isloved', checked=('#{blob.isloved}'==='true' ? "checked" : undefined))
-		input(type='hidden',value='PUT',name='_method')
-		button#btnSubmit(type='submit').
-			Update
+		p Name: 
+			input#inputName(type='text', value='#{blob.name}', name='name')
+		p Badge: 
+			input#inputBadge(type='number', value='#{blob.badge}', name='badge')
+		p DOB: 
+			input#inputDob(type='date', value='#{blobdob}', name='dob')
+		p Are you Loved?: 
+			input#inputIsLoved(type='checkbox', name='isloved', checked=('#{blob.isloved}'==='true' ? "checked" : undefined))
+		p 
+			input(type='hidden',value='PUT',name='_method')
+		p 
+			button#btnSubmit(type='submit').
+				Update
