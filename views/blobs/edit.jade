@@ -3,17 +3,17 @@ extends ../layout
 block content
 	h1.
 		Blob ID #{blob._id}
-	form(action='/blobs/#{blob._id}',method='post',name='updateblob',enctype='application/x-www-form-urlencoded')
-		p Name: 
+	form(action='/blobs/#{blob._id}/edit',method='post',name='updateblob',enctype='application/x-www-form-urlencoded')
+		p Name:
 			input#inputName(type='text', value='#{blob.name}', name='name')
-		p Badge: 
+		p Badge:
 			input#inputBadge(type='number', value='#{blob.badge}', name='badge')
-		p DOB: 
+		p DOB:
 			input#inputDob(type='date', value='#{blobdob}', name='dob')
-		p Are you Loved?: 
+		p Are you Loved?:
 			input#inputIsLoved(type='checkbox', name='isloved', checked=('#{blob.isloved}'==='true' ? "checked" : undefined))
-		p 
+		p
 			input(type='hidden',value='PUT',name='_method')
-		p 
+		p
 			button#btnSubmit(type='submit').
 				Update
