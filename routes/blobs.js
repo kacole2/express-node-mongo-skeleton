@@ -37,7 +37,7 @@ router.route('/')
                     },
                     //JSON response will show all blobs in JSON format
                     json: function(){
-                        res.json(infophotos);
+                        res.json(blobs);
                     }
                 });
               }     
